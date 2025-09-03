@@ -9,18 +9,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #1a2a6c, #2c3e50);
             color: #ecf0f1;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 20px;
             overflow-x: hidden;
         }
@@ -74,16 +73,55 @@
             background: #34495e;
         }
         
+        .panel {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(44, 62, 80, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px 15px;
+            background: rgba(52, 73, 94, 0.8);
+            border-radius: 8px;
+            min-width: 100px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #bdc3c7;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .jump-info {
+            background: rgba(231, 76, 60, 0.2) !important;
+            border: 1px dashed #e74c3c;
+        }
+        
         .controls {
             display: flex;
-            justify-content: center;
-            margin: 20px 0;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             background: linear-gradient(to bottom, #3498db, #2980b9);
             color: white;
             border: none;
@@ -105,29 +143,73 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
-        .stats {
-            display: flex;
-            justify-content: space-around;
+        .btn-secondary {
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(to bottom, #c0392b, #e74c3c);
+        }
+        
+        .btn-jump {
+            background: linear-gradient(to bottom, #9b59b6, #8e44ad);
+        }
+        
+        .btn-jump:hover {
+            background: linear-gradient(to bottom, #8e44ad, #9b59b6);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 800px;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(44, 62, 80, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
         }
         
-        .stat-item {
-            text-align: center;
+        .modal-content {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.5);
+            text-align: left;
         }
         
-        .stat-value {
-            font-size: 1.8em;
-            font-weight: bold;
+        .modal h2 {
             color: #3498db;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8em;
         }
         
-        .instructions {
+        .modal ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .modal li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .modal li:before {
+            content: "•";
+            color: #e74c3c;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+        
+        .requirements {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
@@ -137,29 +219,20 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        .instructions h2 {
+        .requirements h2 {
             color: #3498db;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-align: center;
         }
         
-        .instructions ul {
-            list-style-type: none;
-            padding: 0 15px;
-        }
-        
-        .instructions li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .instructions li:before {
-            content: "•";
+        .requirements h3 {
             color: #e74c3c;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+            margin: 15px 0 10px;
+        }
+        
+        .requirements p {
+            margin-bottom: 10px;
+            padding-left: 15px;
         }
         
         footer {
@@ -184,6 +257,15 @@
             h1 {
                 font-size: 2.2em;
             }
+            
+            .panel {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats {
+                justify-content: space-around;
+            }
         }
         
         @media (max-width: 600px) {
@@ -199,13 +281,13 @@
                 font-size: 1.8em;
             }
             
-            .controls {
-                flex-direction: column;
-                align-items: center;
+            .stat-item {
+                min-width: 80px;
+                padding: 8px 12px;
             }
             
-            .btn {
-                width: 80%;
+            .stat-value {
+                font-size: 1.3em;
             }
         }
     </style>
@@ -214,21 +296,34 @@
     <div class="container">
         <header>
             <h1>Aventura no Labirinto do Conhecimento</h1>
-            <p class="subtitle">Encontre a saída e colete todos os livros do conhecimento!</p>
+            <p class="subtitle">Colete conhecimentos, resolva desafios e encontre a saída!</p>
         </header>
         
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-label">Livros Coletados</div>
-                <div class="stat-value" id="booksCounter">0/5</div>
+        <div class="panel">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">Conhecimentos</div>
+                    <div class="stat-value" id="knowledgeCounter">0/5</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Tempo</div>
+                    <div class="stat-value" id="timer">00:00</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Vidas</div>
+                    <div class="stat-value" id="lives">3</div>
+                </div>
+                <div class="stat-item jump-info">
+                    <div class="stat-label">Força do Pulo</div>
+                    <div class="stat-value" id="jumpPower">15</div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-label">Tempo</div>
-                <div class="stat-value" id="timer">00:00</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-label">Vidas</div>
-                <div class="stat-value" id="lives">3</div>
+            
+            <div class="controls">
+                <button class="btn" id="restartBtn">Reiniciar</button>
+                <button class="btn" id="pauseBtn">Pausar</button>
+                <button class="btn btn-jump" id="increaseJumpBtn">Aumentar Pulo +</button>
+                <button class="btn btn-secondary" id="helpBtn">Ajuda</button>
             </div>
         </div>
         
@@ -236,27 +331,51 @@
             <canvas id="gameCanvas" width="800" height="600"></canvas>
         </div>
         
-        <div class="controls">
-            <button class="btn" id="restartBtn">Reiniciar Jogo</button>
-            <button class="btn" id="pauseBtn">Pausar</button>
-            <button class="btn" id="helpBtn">Como Jogar</button>
+        <div class="requirements">
+            <h2>Requisitos do Projeto</h2>
+            
+            <h3>Histórias de Usuário</h3>
+            <p><strong>HU1:</strong> Como Jogador, quero coletar itens de conhecimento durante o jogo, para aumentar meu score e desbloquear novas áreas do labirinto.</p>
+            <p><strong>HU2:</strong> Como Jogador, quero resolver desafios educativos simples, para testar meus conhecimentos e progredir no jogo.</p>
+            <p><strong>HU3:</strong> Como Designer do Jogo, quero ter ferramentas para criar e posicionar obstáculos e desafios, para proporcionar uma experiência de jogo envolvente e educativa.</p>
+            
+            <h3>Requisitos Não Funcionais</h3>
+            <p><strong>RNF1 (Desempenho):</strong> O jogo deve manter uma taxa de quadros constante (pelo menos 30 FPS) em dispositivos móveis com recursos limitados.</p>
+            <p><strong>RNF2 (Usabilidade):</strong> Os controles do jogo devem ser intuitivos e responsivos, adaptados para touchscreen em dispositivos móveis.</p>
+            <p><strong>RNF3 (Confiabilidade/Segurança):</strong> O jogo deve salvar automaticamente o progresso do jogador a cada fase concluída, prevenindo perda de dados.</p>
         </div>
         
-        <div class="instructions" id="instructionsPanel">
+        <footer>
+            <p>Desenvolvido por Bugikarol para o Projeto de Software - Aventura no Labirinto do Conhecimento | &copy; 2025</p>
+        </footer>
+    </div>
+
+    <!-- Modal de Ajuda -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
             <h2>Como Jogar</h2>
             <ul>
                 <li>Use as teclas <strong>W, A, S, D</strong> ou <strong>setas direcionais</strong> para mover o personagem</li>
                 <li>Pressione <strong>Espaço</strong> ou <strong>seta para cima</strong> para pular</li>
-                <li>Colete todos os 5 livros para habilitar a saída do labirinto</li>
+                <li>Use o botão <strong>Aumentar Pulo</strong> para melhorar sua capacidade de salto (máximo: 3 vezes)</li>
+                <li>Colete todos os 5 livros de conhecimento para progredir no labirinto</li>
+                <li>Resolva os desafios educativos para desbloquear novas áreas</li>
                 <li>Evite os obstáculos vermelhos para não perder vidas</li>
-                <li>Encontre a porta de saída após coletar todos os livros</li>
+                <li>Encontre a porta de saída após completar todos os objetivos</li>
                 <li>Você tem 3 vidas - boa sorte!</li>
             </ul>
+            <button class="btn" id="closeHelpBtn">Entendi</button>
         </div>
-        
-        <footer>
-            <p>Desenvolvido com ❤️ para a aventura do conhecimento | &copy; 2023</p>
-        </footer>
+    </div>
+
+    <!-- Modal de Desafio -->
+    <div class="modal" id="challengeModal">
+        <div class="modal-content">
+            <h2>Desafio do Conhecimento</h2>
+            <div id="challengeQuestion"></div>
+            <div id="challengeOptions" style="margin: 20px 0;"></div>
+            <button class="btn" id="submitAnswerBtn">Responder</button>
+        </div>
     </div>
 
     <script>
@@ -269,10 +388,12 @@
                 this.height = 30;
                 this.color = '#e74c3c';
                 this.speed = 5;
-                this.jumpStrength = 12;
+                this.jumpStrength = 15; // Aumentado para 15 (era 12)
                 this.yVelocity = 0;
                 this.isJumping = false;
                 this.facing = 'right';
+                this.jumpPowerLevel = 1;
+                this.maxJumpPower = 3;
             }
 
             draw(ctx) {
@@ -286,6 +407,12 @@
                     ctx.fillRect(this.x + 20, this.y + 7, 6, 6);
                 } else {
                     ctx.fillRect(this.x + 4, this.y + 7, 6, 6);
+                }
+                
+                // Indicador de poder de pulo
+                ctx.fillStyle = '#9b59b6';
+                for (let i = 0; i < this.jumpPowerLevel; i++) {
+                    ctx.fillRect(this.x + i * 10, this.y - 10, 8, 5);
                 }
             }
 
@@ -308,6 +435,19 @@
                 if (this.x < 0) this.x = 0;
                 if (this.x + this.width > canvas.width) this.x = canvas.width - this.width;
             }
+            
+            increaseJumpPower() {
+                if (this.jumpPowerLevel < this.maxJumpPower) {
+                    this.jumpPowerLevel++;
+                    this.jumpStrength += 3; // Aumenta a força do pulo
+                    return true;
+                }
+                return false;
+            }
+            
+            getJumpStrength() {
+                return this.jumpStrength * (this.jumpPowerLevel / 2);
+            }
         }
 
         class Platform {
@@ -324,6 +464,12 @@
                         break;
                     case 'goal':
                         this.color = '#f1c40f';
+                        break;
+                    case 'challenge':
+                        this.color = '#9b59b6';
+                        break;
+                    case 'jump':
+                        this.color = '#3498db';
                         break;
                     default:
                         this.color = '#2ecc71';
@@ -355,11 +501,25 @@
                     ctx.arc(this.x + this.width/2 + 10, this.y + this.height/2, 5, 0, Math.PI * 2);
                     ctx.fill();
                 }
+                
+                // Desenho especial para desafios
+                if (this.type === 'challenge') {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '12px Arial';
+                    ctx.fillText("?", this.x + this.width/2 - 3, this.y + this.height/2 + 4);
+                }
+                
+                // Desenho especial para plataformas de pulo
+                if (this.type === 'jump') {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '12px Arial';
+                    ctx.fillText("↑", this.x + this.width/2 - 3, this.y + this.height/2 + 4);
+                }
             }
         }
 
         class Collectible {
-            constructor(x, y, type = 'book') {
+            constructor(x, y, type = 'knowledge') {
                 this.x = x;
                 this.y = y;
                 this.width = 20;
@@ -378,8 +538,8 @@
                     this.animationDirection *= -1;
                 }
                 
-                if (this.type === 'book') {
-                    // Desenha um livro
+                if (this.type === 'knowledge') {
+                    // Desenha um livro de conhecimento
                     ctx.fillStyle = '#3498db';
                     ctx.fillRect(this.x, this.y - this.animationOffset, this.width, this.height);
                     
@@ -387,7 +547,8 @@
                     ctx.fillRect(this.x + 3, this.y + 3 - this.animationOffset, this.width - 6, this.height - 6);
                     
                     ctx.fillStyle = '#fff';
-                    ctx.fillText("?", this.x + 7, this.y + 15 - this.animationOffset);
+                    ctx.font = '14px Arial';
+                    ctx.fillText("K", this.x + 7, this.y + 15 - this.animationOffset);
                 }
             }
 
@@ -410,26 +571,63 @@
         let keys = {};
         let gameRunning = true;
         let gamePaused = false;
-        let booksCollected = 0;
-        let totalBooks = 5;
+        let knowledgeCollected = 0;
+        let totalKnowledge = 5;
         let playerLives = 3;
         let gameTime = 0;
         let timerInterval;
         let goalReached = false;
+        let activeChallenge = null;
 
         // Elementos da UI
-        const booksCounter = document.getElementById('booksCounter');
+        const knowledgeCounter = document.getElementById('knowledgeCounter');
         const timerElement = document.getElementById('timer');
         const livesElement = document.getElementById('lives');
+        const jumpPowerElement = document.getElementById('jumpPower');
         const restartBtn = document.getElementById('restartBtn');
         const pauseBtn = document.getElementById('pauseBtn');
+        const increaseJumpBtn = document.getElementById('increaseJumpBtn');
         const helpBtn = document.getElementById('helpBtn');
-        const instructionsPanel = document.getElementById('instructionsPanel');
+        const helpModal = document.getElementById('helpModal');
+        const closeHelpBtn = document.getElementById('closeHelpBtn');
+        const challengeModal = document.getElementById('challengeModal');
+        const challengeQuestion = document.getElementById('challengeQuestion');
+        const challengeOptions = document.getElementById('challengeOptions');
+        const submitAnswerBtn = document.getElementById('submitAnswerBtn');
+
+        // Banco de desafios educativos
+        const challenges = [
+            {
+                question: "Qual é a capital do Brasil?",
+                options: ["Rio de Janeiro", "Brasília", "São Paulo", "Salvador"],
+                answer: 1
+            },
+            {
+                question: "Quantos planetas existem no sistema solar?",
+                options: ["7", "8", "9", "10"],
+                answer: 1
+            },
+            {
+                question: "Quem escreveu 'Dom Quixote'?",
+                options: ["Miguel de Cervantes", "William Shakespeare", "Machado de Assis", "Gabriel García Márquez"],
+                answer: 0
+            },
+            {
+                question: "Qual é o maior oceano do mundo?",
+                options: ["Atlântico", "Índico", "Ártico", "Pacífico"],
+                answer: 3
+            },
+            {
+                question: "Que elemento químico tem o símbolo 'O'?",
+                options: ["Ouro", "Oxigênio", "Ósmio", "Osmio"],
+                answer: 1
+            }
+        ];
 
         // Instância do jogador
         const player = new Player();
 
-        // Plataformas e obstáculos
+        // Plataformas e obstáculos - reorganizadas para melhor jogabilidade
         const platforms = [
             // Plataformas principais
             new Platform(0, 550, 800, 50, 'normal'),
@@ -439,15 +637,21 @@
             new Platform(600, 200, 150, 20, 'normal'),
             new Platform(500, 450, 200, 20, 'normal'),
             
+            // Plataforma de pulo para ajudar a alcançar áreas mais altas
+            new Platform(300, 400, 80, 20, 'jump'),
+            
             // Obstáculos perigosos
             new Platform(300, 550, 50, 20, 'hazard'),
             new Platform(550, 550, 70, 20, 'hazard'),
             
-            // Plataforma de objetivo (inicialmente inativa)
-            new Platform(700, 100, 80, 20, 'goal')
+            // Plataforma de desafio
+            new Platform(650, 450, 100, 20, 'challenge'),
+            
+            // Plataforma de objetivo (mais acessível)
+            new Platform(650, 150, 80, 20, 'goal')
         ];
 
-        // Itens colecionáveis
+        // Itens colecionáveis - posicionados para guiar o jogador
         const collectibles = [
             new Collectible(150, 420),
             new Collectible(450, 320),
@@ -460,17 +664,23 @@
         function initGame() {
             gameRunning = true;
             gamePaused = false;
-            booksCollected = 0;
+            knowledgeCollected = 0;
             playerLives = 3;
             gameTime = 0;
             goalReached = false;
+            activeChallenge = null;
             
             player.x = 50;
             player.y = 50;
             player.yVelocity = 0;
+            player.jumpPowerLevel = 1;
+            player.jumpStrength = 15;
             
             // Reset coletáveis
             collectibles.forEach(item => item.collected = false);
+            
+            // Desativa a plataforma de objetivo inicialmente
+            platforms[platforms.length - 1].color = '#7f8c8d';
             
             // Atualiza UI
             updateUI();
@@ -507,11 +717,11 @@
                 item.draw(ctx);
                 if (item.checkCollision(player) && !item.collected) {
                     item.collected = true;
-                    booksCollected++;
+                    knowledgeCollected++;
                     updateUI();
                     
-                    // Ativa a plataforma de objetivo se todos os livros foram coletados
-                    if (booksCollected === totalBooks) {
+                    // Ativa a plataforma de objetivo se todos os conhecimentos foram coletados
+                    if (knowledgeCollected === totalKnowledge) {
                         platforms[platforms.length - 1].color = '#27ae60';
                     }
                 }
@@ -523,8 +733,11 @@
             checkCollisions();
             player.draw(ctx);
             
+            // Verifica desafios
+            checkChallenge();
+            
             // Verifica vitória
-            if (booksCollected === totalBooks) {
+            if (knowledgeCollected === totalKnowledge) {
                 checkGoal();
             }
             
@@ -553,6 +766,20 @@
                 const size = Math.random() * 2;
                 ctx.fillRect(x, y, size, size);
             }
+            
+            // Desenha dicas visuais para plataformas altas
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.3)';
+            ctx.beginPath();
+            ctx.moveTo(650, 150);
+            ctx.lineTo(700, 100);
+            ctx.lineTo(750, 100);
+            ctx.lineTo(700, 150);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.font = '14px Arial';
+            ctx.fillStyle = '#3498db';
+            ctx.fillText('Use o botão "Aumentar Pulo" para chegar aqui!', 450, 100);
         }
 
         // Lida com a entrada do teclado
@@ -566,7 +793,7 @@
                 player.facing = 'left';
             }
             if ((keys['ArrowUp'] || keys['w'] || keys[' ']) && !player.isJumping) {
-                player.yVelocity = -player.jumpStrength;
+                player.yVelocity = -player.getJumpStrength();
                 player.isJumping = true;
             }
         }
@@ -583,7 +810,7 @@
                     player.x < platform.x + platform.width
                 ) {
                     // Plataforma normal
-                    if (platform.type === 'normal') {
+                    if (platform.type === 'normal' || platform.type === 'jump') {
                         if (player.y + player.height - player.yVelocity <= platform.y) {
                             player.y = platform.y - player.height;
                             player.yVelocity = 0;
@@ -604,6 +831,43 @@
             if (!onPlatform && player.yVelocity > 0) {
                 player.isJumping = true;
             }
+        }
+
+        // Verifica se o jogador alcançou um desafio
+        function checkChallenge() {
+            const challengePlatform = platforms.find(p => p.type === 'challenge');
+            
+            if (
+                player.y + player.height > challengePlatform.y &&
+                player.y < challengePlatform.y + challengePlatform.height &&
+                player.x + player.width > challengePlatform.x &&
+                player.x < challengePlatform.x + challengePlatform.width &&
+                !activeChallenge
+            ) {
+                activeChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+                showChallenge(activeChallenge);
+            }
+        }
+
+        // Mostra um desafio educativo
+        function showChallenge(challenge) {
+            gamePaused = true;
+            challengeQuestion.textContent = challenge.question;
+            
+            // Limpa opções anteriores
+            challengeOptions.innerHTML = '';
+            
+            // Adiciona novas opções
+            challenge.options.forEach((option, index) => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <input type="radio" id="option${index}" name="challenge" value="${index}">
+                    <label for="option${index}">${option}</label>
+                `;
+                challengeOptions.appendChild(div);
+            });
+            
+            challengeModal.style.display = 'flex';
         }
 
         // Verifica se o jogador alcançou o objetivo
@@ -630,8 +894,9 @@
 
         // Atualiza a interface do usuário
         function updateUI() {
-            booksCounter.textContent = `${booksCollected}/${totalBooks}`;
+            knowledgeCounter.textContent = `${knowledgeCollected}/${totalKnowledge}`;
             livesElement.textContent = playerLives;
+            jumpPowerElement.textContent = player.jumpPowerLevel * 5;
         }
 
         // Atualiza o timer
@@ -699,8 +964,45 @@
             }
         });
 
+        increaseJumpBtn.addEventListener('click', () => {
+            if (player.increaseJumpPower()) {
+                updateUI();
+            } else {
+                alert("Você já atingiu o nível máximo de pulo!");
+            }
+        });
+
         helpBtn.addEventListener('click', () => {
-            instructionsPanel.style.display = instructionsPanel.style.display === 'none' ? 'block' : 'none';
+            helpModal.style.display = 'flex';
+        });
+
+        closeHelpBtn.addEventListener('click', () => {
+            helpModal.style.display = 'none';
+        });
+
+        submitAnswerBtn.addEventListener('click', () => {
+            const selectedOption = document.querySelector('input[name="challenge"]:checked');
+            
+            if (selectedOption) {
+                const answerIndex = parseInt(selectedOption.value);
+                
+                if (answerIndex === activeChallenge.answer) {
+                    // Resposta correta
+                    alert('Resposta correta! Você ganhou uma vida extra!');
+                    playerLives++;
+                    updateUI();
+                } else {
+                    // Resposta incorreta
+                    alert('Resposta incorreta! Tente novamente mais tarde.');
+                }
+                
+                challengeModal.style.display = 'none';
+                gamePaused = false;
+                activeChallenge = null;
+                requestAnimationFrame(gameLoop);
+            } else {
+                alert('Por favor, selecione uma resposta.');
+            }
         });
 
         // Inicia o jogo
